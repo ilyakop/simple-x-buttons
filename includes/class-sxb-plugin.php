@@ -64,7 +64,7 @@ class SXB_Plugin {
 	}
 
 	public function load_textdomain(): void {
-		load_plugin_textdomain( 'simple-x-buttons', false, dirname( plugin_basename( SXB_PLUGIN_PATH . 'simple-x-buttons.php' ) ) . '/languages' );
+		load_plugin_textdomain( 'simple-x-buttons', false, dirname( SXB_PLUGIN_BASENAME ) . '/languages' );
 	}
 
 	public function plugin_menu(): void {
@@ -185,7 +185,7 @@ class SXB_Plugin {
 	}
 
 	public function plugin_row_meta( array $links, string $file ): array {
-		if ( $file !== plugin_basename( SXB_PLUGIN_PATH . 'simple-x-buttons.php' ) ) {
+		if ( $file !== SXB_PLUGIN_BASENAME ) {
 			return $links;
 		}
 		$extra = array( '<a href="' . esc_url( menu_page_url( 'sxb_plugin', false ) ) . '">' . esc_html__( 'Settings', 'simple-x-buttons' ) . '</a>' );
