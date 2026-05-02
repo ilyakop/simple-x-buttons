@@ -47,53 +47,11 @@ class SXB_Block {
 			'before'
 		);
 
-		$common = array(
-			'editor_script' => 'sxb-block-editor',
-			'editor_style'  => 'sxb-block-editor-style',
-			'style'         => 'sxb-frontend',
-		);
-
-		// Share block — reads post context automatically.
-		register_block_type( 'simple-x-buttons/share', array_merge( $common, array(
-			'render_callback' => array( $this, 'render_share' ),
-			'attributes'      => array(
-				'label'    => array( 'type' => 'string', 'default' => $options['share_label'] ),
-				'style'    => array( 'type' => 'string', 'default' => $options['button_style'] ),
-				'hashtags' => array( 'type' => 'string', 'default' => $options['share_hashtags'] ),
-				'via'      => array( 'type' => 'string', 'default' => $options['share_via'] ),
-			),
-		) ) );
-
-		// Follow and Mention blocks — require a handle attribute.
-		register_block_type( 'simple-x-buttons/follow', array_merge( $common, array(
-			'render_callback' => array( $this, 'render_handle_action' ),
-			'attributes'      => array(
-				'type'   => array( 'type' => 'string', 'default' => 'follow' ),
-				'handle' => array( 'type' => 'string', 'default' => $options['follow_handle'] ),
-				'label'  => array( 'type' => 'string', 'default' => $options['follow_label'] ),
-				'style'  => array( 'type' => 'string', 'default' => $options['button_style'] ),
-			),
-		) ) );
-
-		register_block_type( 'simple-x-buttons/mention', array_merge( $common, array(
-			'render_callback' => array( $this, 'render_handle_action' ),
-			'attributes'      => array(
-				'type'   => array( 'type' => 'string', 'default' => 'mention' ),
-				'handle' => array( 'type' => 'string', 'default' => $options['mention_handle'] ),
-				'label'  => array( 'type' => 'string', 'default' => '' ),
-				'style'  => array( 'type' => 'string', 'default' => $options['button_style'] ),
-			),
-		) ) );
-
-		// Hashtag block — requires a tag attribute.
-		register_block_type( 'simple-x-buttons/hashtag', array_merge( $common, array(
-			'render_callback' => array( $this, 'render_hashtag' ),
-			'attributes'      => array(
-				'tag'   => array( 'type' => 'string', 'default' => $options['hashtag_tag'] ),
-				'label' => array( 'type' => 'string', 'default' => '' ),
-				'style' => array( 'type' => 'string', 'default' => $options['button_style'] ),
-			),
-		) ) );
+		// Directory-based registration — metadata is read from each block.json.
+		register_block_type( SXB_PLUGIN_PATH . 'blocks/share',   array( 'render_callback' => array( $this, 'render_share' ) ) );
+		register_block_type( SXB_PLUGIN_PATH . 'blocks/follow',  array( 'render_callback' => array( $this, 'render_handle_action' ) ) );
+		register_block_type( SXB_PLUGIN_PATH . 'blocks/mention', array( 'render_callback' => array( $this, 'render_handle_action' ) ) );
+		register_block_type( SXB_PLUGIN_PATH . 'blocks/hashtag', array( 'render_callback' => array( $this, 'render_hashtag' ) ) );
 	}
 
 	public function render_share( array $attributes ): string {
@@ -116,11 +74,17 @@ class SXB_Block {
 		$type   = sanitize_key( $attributes['type'] ?? 'follow' );
 		$handle = $attributes['handle'] ?? '';
 
+		$options = SXB_Options::get();
+
+		// Fall back to global option — handles blocks saved before block.json defaults were introduced.
+		if ( empty( $handle ) ) {
+			$handle = 'mention' === $type ? $options['mention_handle'] : $options['follow_handle'];
+		}
+
 		if ( empty( $handle ) ) {
 			return '';
 		}
 
-		$options = SXB_Options::get();
 		$this->enqueue_assets();
 
 		return SXB_Button::render( array(
@@ -135,11 +99,17 @@ class SXB_Block {
 	public function render_hashtag( array $attributes ): string {
 		$tag = $attributes['tag'] ?? '';
 
+		$options = SXB_Options::get();
+
+		// Fall back to global option — handles blocks saved before block.json defaults were introduced.
+		if ( empty( $tag ) ) {
+			$tag = $options['hashtag_tag'];
+		}
+
 		if ( empty( $tag ) ) {
 			return '';
 		}
 
-		$options = SXB_Options::get();
 		$this->enqueue_assets();
 
 		return SXB_Button::render( array(

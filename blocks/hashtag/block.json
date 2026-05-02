@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "simple-x-buttons/hashtag",
+	"version": "2.0.0",
+	"title": "X Hashtag Button",
+	"category": "widgets",
+	"icon": "tag",
+	"description": "Let visitors tweet with a pre-filled hashtag. No API key required.",
+	"keywords": ["x", "twitter", "hashtag", "tweet", "social"],
+	"textdomain": "simple-x-buttons",
+	"supports": { "html": false },
+	"attributes": {
+		"tag":   { "type": "string", "default": "" },
+		"label": { "type": "string", "default": "" },
+		"style": { "type": "string", "default": "" }
+	},
+	"editorScript": "sxb-block-editor",
+	"editorStyle":  "sxb-block-editor-style",
+	"style":        "sxb-frontend"
+}

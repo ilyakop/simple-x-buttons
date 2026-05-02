@@ -1,17 +1,17 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "simple-x-buttons/follow",
+	"name": "simple-x-buttons/mention",
 	"version": "2.0.0",
-	"title": "X Follow Button",
+	"title": "X Mention Button",
 	"category": "widgets",
-	"icon": "admin-users",
-	"description": "Add a Follow button that opens the X follow intent. No API key required.",
-	"keywords": ["x", "twitter", "follow", "social"],
+	"icon": "admin-comments",
+	"description": "Let visitors tweet to a specific X handle with one click. No API key required.",
+	"keywords": ["x", "twitter", "mention", "tweet", "social"],
 	"textdomain": "simple-x-buttons",
 	"supports": { "html": false },
 	"attributes": {
-		"type":   { "type": "string", "default": "follow" },
+		"type":   { "type": "string", "default": "mention" },
 		"handle": { "type": "string", "default": "" },
 		"label":  { "type": "string", "default": "" },
 		"style":  { "type": "string", "default": "" }
