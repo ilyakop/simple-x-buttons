@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "simple-x-buttons/follow",
+	"version": "2.0.0",
+	"title": "X Follow Button",
+	"category": "widgets",
+	"icon": "twitter",
+	"description": "Add an X (Twitter) follow button anywhere in your content.",
+	"keywords": ["x", "twitter", "follow", "social"],
+	"textdomain": "simple-x-buttons",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"handle":     { "type": "string",  "default": "" },
+		"label":      { "type": "string",  "default": "Follow on X" },
+		"showHandle": { "type": "boolean", "default": true },
+		"style":      { "type": "string",  "default": "dark" }
+	},
+	"editorScript": "sxb-block-editor",
+	"style":        "sxb-frontend"
+}

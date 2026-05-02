@@ -1,0 +1,152 @@
+/* Simple X Buttons – admin styles */
+
+.sxb-settings .sxb-tagline {
+	color: #646970;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+
+.sxb-section {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 0 20px 16px;
+	margin-bottom: 20px;
+}
+
+.sxb-section__title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	border-bottom: 1px solid #f0f0f1;
+	margin: 0 -20px 16px;
+	padding: 14px 20px;
+}
+
+.sxb-section__title .dashicons {
+	color: #2271b1;
+	font-size: 18px;
+	width: 18px;
+	height: 18px;
+}
+
+/* Placements table */
+.sxb-placements-table thead th {
+	font-weight: 600;
+	color: #646970;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	padding: 8px 16px 8px 0;
+}
+
+.sxb-placements-table td,
+.sxb-placements-table th {
+	padding: 10px 16px 10px 0;
+	vertical-align: middle;
+}
+
+/* Column 1 — Placement label: fixed width */
+.sxb-placements-table th:nth-child(1),
+.sxb-placements-table td:nth-child(1) {
+	width: 160px;
+}
+
+/* Column 2 — Enabled toggle: shrink to content, centred */
+.sxb-placements-table th:nth-child(2),
+.sxb-placements-table td:nth-child(2) {
+	width: 1%;
+	white-space: nowrap;
+	text-align: center;
+	padding-right: 24px;
+}
+
+/* Columns 3 & 4 — Buttons and Post Types: share remaining space */
+.sxb-placements-table th:nth-child(3),
+.sxb-placements-table td:nth-child(3),
+.sxb-placements-table th:nth-child(4),
+.sxb-placements-table td:nth-child(4) {
+	width: auto;
+}
+
+/* Toggle switch */
+.sxb-toggle {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 22px;
+}
+
+.sxb-toggle input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.sxb-toggle__slider {
+	position: absolute;
+	inset: 0;
+	background: #c3c4c7;
+	border-radius: 22px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.sxb-toggle__slider::before {
+	content: "";
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	left: 3px;
+	top: 3px;
+	background: #fff;
+	border-radius: 50%;
+	transition: transform 0.2s;
+}
+
+.sxb-toggle input:checked + .sxb-toggle__slider {
+	background: #2271b1;
+}
+
+.sxb-toggle input:checked + .sxb-toggle__slider::before {
+	transform: translateX(18px);
+}
+
+/* Post type checkboxes */
+.sxb-post-type-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin-right: 12px;
+	font-size: 13px;
+}
+
+/* Pro badge */
+.sxb-pro-badge {
+	display: inline-block;
+	background: #f0f0f1;
+	color: #646970;
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding: 2px 7px;
+	border-radius: 10px;
+	border: 1px solid #c3c4c7;
+}
+
+/* Pro rows */
+.sxb-pro-row {
+	opacity: 0.5;
+}
+
+.sxb-pro-row td {
+	color: #646970;
+}
+
+.sxb-pro-row__note {
+	font-style: italic;
+	font-size: 12px;
+}

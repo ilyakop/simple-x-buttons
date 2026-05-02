@@ -1,0 +1,19 @@
+/* Simple X Buttons – block editor preview styles (mirrors frontend) */
+.sxb-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 0 16px;
+	height: 36px;
+	border-radius: 18px;
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	box-sizing: border-box;
+	border: none;
+}
+
+.sxb-button--dark    { background: #000; color: #fff; }
+.sxb-button--outline { background: transparent; color: currentColor; border: 1.5px solid currentColor; }
+.sxb-button--ghost   { background: rgba(0,0,0,.05); color: currentColor; border: .5px solid rgba(0,0,0,.15); }

@@ -1,0 +1,77 @@
+/* Simple X Buttons – frontend styles */
+
+.sxb-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 0 16px;
+	height: 36px;
+	border-radius: 18px;
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	transition: opacity 0.15s;
+	line-height: 1;
+	box-sizing: border-box;
+	border: none;
+}
+
+.sxb-button:hover {
+	opacity: 0.85;
+	text-decoration: none;
+}
+
+/* ── Dark ── */
+.sxb-button--dark {
+	background: #000;
+	color: #fff;
+	border: none;
+}
+
+/* ── Outline ── */
+.sxb-button--outline {
+	background: transparent;
+	color: currentColor;
+	border: 1.5px solid currentColor;
+}
+
+/* ── Ghost ── */
+.sxb-button--ghost {
+	background: rgba(0, 0, 0, 0.05);
+	color: currentColor;
+	border: 0.5px solid rgba(0, 0, 0, 0.15);
+}
+
+/* ── Logo ── */
+.sxb-logo {
+	flex-shrink: 0;
+	fill: currentColor;
+}
+
+.sxb-logo--white {
+	fill: #fff;
+}
+
+/* ── Button bar ── */
+.sxb-button-bar {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin: 1.5em 0;
+	align-items: center;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+	.sxb-button--outline {
+		color: #e7e9ea;
+		border-color: #536471;
+	}
+
+	.sxb-button--ghost {
+		background: rgba(255, 255, 255, 0.08);
+		color: #e7e9ea;
+		border-color: rgba(255, 255, 255, 0.18);
+	}
+}
