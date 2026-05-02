@@ -101,10 +101,10 @@ The shortcodes work in any context that processes WordPress shortcodes. The Gute
 
 == Screenshots ==
 
-1. Settings page — clean section layout
-2. Dark, Outline, and Ghost button styles on the frontend
+1. Buttons added to post
+2. Share on X popup example
 3. Gutenberg block editor preview
-4. Widget settings
+4. Settings page
 
 == Changelog ==
 
